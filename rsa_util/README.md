@@ -4,9 +4,6 @@ rsa util
 
 ## Getting Started
 
-void main() {
-
-
   const s = "This is a test by RSA 123456 !"; //the s length limit 127
 
   List<String> keys = RSAUtil.generateKeys(1024);
@@ -26,5 +23,3 @@ void main() {
 
   var jiemi2 = rsa.decryptByPrivateKey(jiami);
   print("公匙解密" + jiemi2);
-
-}
