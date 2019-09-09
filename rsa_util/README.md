@@ -4,11 +4,27 @@ rsa util
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+void main() {
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+  const s = "This is a test by RSA 123456 !"; //the s length limit 127
+
+  List<String> keys = RSAUtil.generateKeys(1024);
+  final String pubKey = keys[0];
+  final String priKey = keys[1];
+
+  RSAUtil rsa = RSAUtil.getInstance(pubKey, priKey);
+
+  var jiami = rsa.encryptByPublicKey(s);
+  print("公匙加密" + jiami);
+
+  var jiemi = rsa.decryptByPrivateKey(jiami);
+  print("私匙解密" + jiemi);
+
+  var jiami2 = rsa.encryptByPublicKey(s);
+  print("私匙加密" + jiami2);
+
+  var jiemi2 = rsa.decryptByPrivateKey(jiami);
+  print("公匙解密" + jiemi2);
+
+}
