@@ -1,10 +1,7 @@
-# rsa_util
+import 'package:rsa_util/rsa_util.dart';
+void main(){
 
-rsa util
-
-## Getting Started
-
-const s = "This is a test by RSA 123456 !"; //the s length limit 127
+  const s = "This is a test by RSA 123456 !"; //the s length limit 127
 
   List<String> keys = RSAUtil.generateKeys(1024);
   final String pubKey = keys[0];
@@ -22,4 +19,6 @@ const s = "This is a test by RSA 123456 !"; //the s length limit 127
   print("私匙加密" + jiami2);
 
   var jiemi2 = rsa.decryptByPrivateKey(jiami);
-  print("公匙解密" + jiemi2);  
+  print("公匙解密" + jiemi2);
+
+}
