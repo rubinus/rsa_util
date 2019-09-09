@@ -1,6 +1,6 @@
 name: rsa_util
 description: rsa util 生成公匙与私匙，加密与解密
-version: 0.0.2
+version: 0.0.3
 author: rubinus <rubinus.chu@gmail.com>
 homepage: https://github.com/rubinus/rsa_util
 
