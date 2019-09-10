@@ -4,7 +4,7 @@ import "package:pointycastle/src/registry/registry.dart";
 
 /// An implementation of [SecureRandom] that return fixed numbers.
 class FixedSecureRandom extends SecureRandomBase {
-  static final FactoryConfig FACTORY_CONFIG =
+  static final FactoryConfig factoryConfig =
       new StaticFactoryConfig(SecureRandom, "Fixed", () => FixedSecureRandom());
 
   var _next = 0;

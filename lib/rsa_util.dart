@@ -7,7 +7,6 @@ import 'package:asn1lib/asn1lib.dart';
 import 'fixed_secure_random.dart';
 
 class RSAUtil {
-
   static RSAPublicKey publicKey;
 
   static RSAPrivateKey privateKey;
@@ -33,7 +32,7 @@ class RSAUtil {
   }
 
   ///生成公匙 和 私匙，默认1024，u can input 128,256,512,1024,2048
-  static List<String> generateKeys ([int bits = 1024]){
+  static List<String> generateKeys([int bits = 1024]) {
     var rnd = FixedSecureRandom();
     var rsapars = RSAKeyGeneratorParameters(BigInt.parse("65537"), bits, 12);
     var params = ParametersWithRandom(rsapars, rnd);
@@ -42,7 +41,7 @@ class RSAUtil {
     keyGenerator.init(params);
 
     AsymmetricKeyPair<PublicKey, PrivateKey> keyPair =
-    keyGenerator.generateKeyPair();
+        keyGenerator.generateKeyPair();
     RSAPrivateKey privateKey = keyPair.privateKey;
     RSAPublicKey publicKey = keyPair.publicKey;
 
@@ -69,6 +68,7 @@ class RSAUtil {
       print(e.toString());
     }
   }
+
   ///RSA私钥加密
   encryptByPrivateKey(String data) {
     try {
@@ -120,7 +120,6 @@ class RSAUtil {
     }
   }
 
-
   static String encodePublicKeyToPemPKCS1(RSAPublicKey publicKey) {
     var topLevel = ASN1Sequence();
 
@@ -163,7 +162,6 @@ class RSAUtil {
     return """-----BEGIN RSA PRIVATE KEY-----\n$dataBase64\n-----END RSA PRIVATE KEY-----""";
 //  return dataBase64;
   }
-
 
   ///解析PEM证书生成RSA密钥
   RSAAsymmetricKey parse(String key) {
@@ -232,5 +230,4 @@ class RSAUtil {
 
     return parser.nextObject() as ASN1Sequence;
   }
-
 }
