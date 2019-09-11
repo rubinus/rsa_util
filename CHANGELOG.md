@@ -1,3 +1,4 @@
-## [0.0.1] - TODO: Add release date.
-
-* TODO: Describe initial release.
+## 0.0.7
+* Added 生成公匙和私匙，以及使用任意的字符串做为密匙
+* 用公匙加密，用私匙解密
+* 用私匙加密，用公匙解密
