@@ -1,6 +1,6 @@
 name: rsa_util
 description: rsa util generateKeys for publicKey and privateKey,encrypt and decrypt
-version: 0.1.0
+version: 0.1.1
 author: rubinus <rubinus.chu@gmail.com>
 homepage: https://github.com/rubinus/rsa_util
 

@@ -1,10 +1,12 @@
 library rsa_util;
 
+import 'dart:math';
+
 import 'package:pointycastle/pointycastle.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:asn1lib/asn1lib.dart';
-import 'fixed_secure_random.dart';
+import 'package:pointycastle/random/fortuna_random.dart';
 
 class RSAUtil {
   static RSAPublicKey publicKey;
@@ -33,7 +35,7 @@ class RSAUtil {
 
   ///生成公匙 和 私匙，默认1024，u can input 128,256,512,1024,2048
   static List<String> generateKeys([int bits = 1024]) {
-    var rnd = FixedSecureRandom();
+    var rnd = getSecureRandom();
     var rsapars = RSAKeyGeneratorParameters(BigInt.parse("65537"), bits, 12);
     var params = ParametersWithRandom(rsapars, rnd);
 
@@ -118,6 +120,17 @@ class RSAUtil {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  static SecureRandom getSecureRandom() {
+    var secureRandom = FortunaRandom();
+    var random = Random.secure();
+    List<int> seeds = [];
+    for (int i = 0; i < 32; i++) {
+      seeds.add(random.nextInt(255));
+    }
+    secureRandom.seed(new KeyParameter(new Uint8List.fromList(seeds)));
+    return secureRandom;
   }
 
   static String encodePublicKeyToPemPKCS1(RSAPublicKey publicKey) {

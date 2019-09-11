@@ -2,7 +2,7 @@ import 'package:rsa_util/rsa_util.dart';
 
 void main(){
 
-  const s = "This is a test by RSA 123456 !"; //the s length limit 127
+  const s = "This is a sss test by RSA 123456 !"; //the s length limit 117
 
   //如果你没有密匙，你可以生成一个，像下面这样，生成1024位的公匙和私匙
   List<String> keys = RSAUtil.generateKeys(1024);
