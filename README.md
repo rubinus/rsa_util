@@ -31,12 +31,13 @@ void main(){
     
     print("私匙解密" + jiemi);
     
-    var jiami2 = rsa.encryptByPublicKey(s);
+
+    var jiami2 = rsa.encryptByPrivateKey(s);
     
     print("私匙加密" + jiami2);
+
+    var jiemi2 = rsa.decryptByPublicKey(jiami2);
     
-    var jiemi2 = rsa.decryptByPrivateKey(jiami);
-    
-    print("公匙解密" + jiemi2);  
+    print("公匙解密" + jiemi2);
 
 }
